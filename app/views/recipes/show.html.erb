@@ -1,0 +1,32 @@
+<div id="recipe"  class="container spacer">
+  <br>
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong><%= @recipe.name %></strong></h3>
+        </div>
+        <div class="panel-body">
+          <img src="http://placehold.it/750x400" alt="" class="img-thumbnail">
+          <br><br>
+          <blockquote><%= @recipe.summary %></blockquote>
+          <p class="well"><%= @recipe.description %></p>
+          <p><small>Added <%= time_ago_in_words(@recipe.created_at) %></small></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+          <img class="media-object img-circle img-responsive" src="<%= gravatar_for(@recipe.chef.email, size: 200) %>" alt="...">
+        <div class="caption">
+          <h3><%= @recipe.chef.chefname %></h3>
+          <p><small>Regirsted <%= time_ago_in_words(@recipe.chef.created_at) %></small></p>
+          <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%= link_to "Back to list", recipes_path, class: "btn btn-default" %>
+  </div>
+</div>

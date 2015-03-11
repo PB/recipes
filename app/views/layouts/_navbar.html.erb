@@ -6,7 +6,11 @@
       <div class="container">
         <div class="navbar-header">
           <!-- Logo Starts -->
-          <a class="navbar-brand" href="#home"><%= image_tag('logo.png') %></a>
+          <% if params[:controller] == 'pages' %>
+            <a class="navbar-brand navbar-brand-clik" href="#home"><%= image_tag('logo.png') %></a>
+          <% else %>
+              <%= link_to image_tag('logo.png'), root_path, class: "navbar-brand" %>
+          <% end %>
           <!-- #Logo Ends -->
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -17,9 +21,9 @@
         </div>
         <!-- Nav Starts -->
         <div class="navbar-collapse  collapse">
-          <ul class="nav navbar-nav navbar-right scroll">
+          <ul class="nav navbar-nav navbar-right <%= 'scroll' if params[:controller] == 'pages' %> ">
              <li class="active"><a href="#home">Home</a></li>
-             <li ><a href="#menu">Menu</a></li>
+             <li ><a href="<%= root_path %>#recipes-menu">Recipes</a></li>
              <li ><a href="#foods">Foods</a></li>
              <li ><a href="#partners">Partners</a></li>
              <li ><a href="#contact">Contact</a></li>

@@ -1,0 +1,30 @@
+<div id="recipes"  class="container spacer">
+  <br>
+  <% @recipes.each do |recipe| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="http://placehold.it/240x200" alt="" class="img-thumbnail">
+        <div class="caption text-center">
+          <h1><%= recipe.name %></h1>
+          <p><%= recipe.summary %></p>
+          <p>
+            <%= link_to "View recipe", recipe, class: "btn btn-primary" %>
+          </p>
+          <p><small>Added <%= time_ago_in_words(recipe.created_at) %></small></p>
+          <div class="media">
+            <div class="media-left media-middle">
+              <a href="#">
+                <img class="media-object img-circle img-responsive" src="<%= gravatar_for(recipe.chef.email, size: 100) %>" alt="...">
+              </a>
+            </div>
+            <div class="media-left">
+              <h4 class="media-heading">Chef: <%= recipe.chef.chefname %></h4>
+              <br><br>
+              <small>Regirsted <%= time_ago_in_words(recipe.chef.created_at) %></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
