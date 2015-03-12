@@ -1,5 +1,6 @@
 <div id="recipes"  class="container spacer">
   <br>
+  <div class="row">
   <% @recipes.each do |recipe| %>
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
@@ -43,4 +44,8 @@
       </div>
     </div>
   <% end %>
+  </div>
+  <div class="row text-center">
+    <%= will_paginate @recipes, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>

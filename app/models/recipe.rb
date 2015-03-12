@@ -8,6 +8,7 @@ class Recipe < ActiveRecord::Base
   
   mount_uploader :picture, PictureUploader
   validate :picture_size
+  default_scope -> { order(created_at: :desc) }
   
   def thumbs_up_total
     self.likes.where(like: true).size
