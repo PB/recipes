@@ -17,3 +17,6 @@
 
 # C9 ignore config
 .c9/
+
+# Ignore public files from uploader
+public/uploads/

@@ -7,11 +7,17 @@
           <h3 class="panel-title"><strong><%= @recipe.name %></strong></h3>
         </div>
         <div class="panel-body">
-          <img src="http://placehold.it/750x400" alt="" class="img-thumbnail">
+          <div class="text-center">
+            <% if @recipe.picture? %>
+              <%= image_tag(@recipe.picture.big.url, class: "img-thumbnail img-responsive") %>
+            <% else %>
+              <img src="http://placehold.it/750x400" alt="" class="img-thumbnail img-responsive">
+            <% end %>
+          </div>
           <br><br>
           <blockquote><%= @recipe.summary %></blockquote>
           <div class="well"><%= simple_format @recipe.description %></div>
-          <p><small>Added <%= time_ago_in_words(@recipe.created_at) %></small></p>
+          <p><small>Added <%= time_ago_in_words(@recipe.created_at) %> ago</small></p>
         </div>
       </div>
     </div>
@@ -20,7 +26,7 @@
           <img class="media-object img-circle img-responsive" src="<%= gravatar_for(@recipe.chef.email, size: 200) %>" alt="...">
         <div class="caption">
           <h3><%= @recipe.chef.chefname %></h3>
-          <p><small>Regirsted <%= time_ago_in_words(@recipe.chef.created_at) %></small></p>
+          <p><small>Regirsted <%= time_ago_in_words(@recipe.chef.created_at) %> ago</small></p>
           <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
         </div>
       </div>

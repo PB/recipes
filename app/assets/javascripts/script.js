@@ -5,12 +5,16 @@ $(document).on('ready page:load', function () {
         $(".scroll li").removeClass('active');
         $(this).parents('li').toggleClass('active');
     });
+    
+    $('#recipe_picture').bind('change', function() {
+        var size_in_megabytes = this.files[0].size/1024/1024;
+        console.log(size_in_megabytes);
+        if (size_in_megabytes > 8) {
+            alert('Maximum file size is 8MB');
+            $('#recipe_picture').val('');
+        }
+    });
 });
-
-
-
-
-
 
 var wow = new WOW(
   {
@@ -22,9 +26,6 @@ var wow = new WOW(
   }
 );
 wow.init();
-
-
-
 
 $('.carousel').swipe( {
      swipeLeft: function() {

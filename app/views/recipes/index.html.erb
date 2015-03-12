@@ -3,14 +3,18 @@
   <% @recipes.each do |recipe| %>
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-        <img src="http://placehold.it/240x200" alt="" class="img-thumbnail">
+        <% if recipe.picture? %>
+          <%= image_tag(recipe.picture.medium.url, size: "240x200", class: "img-thumbnail img-responsive") %>
+        <% else %>
+          <img src="http://placehold.it/240x200" alt="" class="img-thumbnail img-responsive">
+        <% end %>
         <div class="caption text-center">
           <h1><%= recipe.name %></h1>
           <p class="well"><%= recipe.summary %></p>
           <p>
             <%= link_to "View recipe", recipe, class: "btn btn-primary" %>
           </p>
-          <p><small>Added <%= time_ago_in_words(recipe.created_at) %></small></p>
+          <p><small>Added <%= time_ago_in_words(recipe.created_at) %> ago</small></p>
           <div class="media">
             <div class="media-left media-middle">
               <a href="#">
@@ -19,7 +23,7 @@
             </div>
             <div class="media-right">
               <h4 class="media-heading">Chef: <%= recipe.chef.chefname %></h4>
-              <small>Regirsted <%= time_ago_in_words(recipe.chef.created_at) %></small>
+              <small>Regirsted <%= time_ago_in_words(recipe.chef.created_at) %> ago</small>
             </div>
           </div>
         </div>
