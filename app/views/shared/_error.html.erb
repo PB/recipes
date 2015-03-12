@@ -1,0 +1,11 @@
+<% if obj.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <a class="close" data-dismiss="alert">&#215;</a>
+    <h4><strong><%= pluralize(obj.errors.count, "error") %> prohibited this recipe from being saved:</strong></h4>
+    <ul>
+    <% obj.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
