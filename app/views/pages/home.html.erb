@@ -33,14 +33,22 @@
      <h4><i class="fa fa-bars"></i> Recipes</h4>
 
       <!-- menus -->
-      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
     <div class="panel-heading" role="tab">
       <h4 class="panel-title">
         <%= link_to raw('<i class="fa fa-bars"></i> All recipes'), recipes_path %>
       </h4>
     </div>
   </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+      <h4 class="panel-title">
+        <%= link_to raw('<i class="fa fa-plus"></i> Add new recipe'), new_recipe_path %>
+      </h4>
+    </div>
+  </div>
+  <!--
   <div class="panel panel-default">
     <div class="panel-heading" role="tab">
       <h4 class="panel-title">
@@ -128,7 +136,7 @@
       </div>
     </div>
   </div>
-
+-->
 
 </div>
       <!-- menus -->

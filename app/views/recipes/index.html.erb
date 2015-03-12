@@ -6,7 +6,7 @@
         <img src="http://placehold.it/240x200" alt="" class="img-thumbnail">
         <div class="caption text-center">
           <h1><%= recipe.name %></h1>
-          <p><%= recipe.summary %></p>
+          <p class="well"><%= recipe.summary %></p>
           <p>
             <%= link_to "View recipe", recipe, class: "btn btn-primary" %>
           </p>
@@ -14,12 +14,11 @@
           <div class="media">
             <div class="media-left media-middle">
               <a href="#">
-                <img class="media-object img-circle img-responsive" src="<%= gravatar_for(recipe.chef.email, size: 100) %>" alt="...">
+                <img class="media-object img-circle img-responsive" src="<%= gravatar_for(recipe.chef.email, size: 50) %>" alt="...">
               </a>
             </div>
-            <div class="media-left">
+            <div class="media-right">
               <h4 class="media-heading">Chef: <%= recipe.chef.chefname %></h4>
-              <br><br>
               <small>Regirsted <%= time_ago_in_words(recipe.chef.created_at) %></small>
             </div>
           </div>

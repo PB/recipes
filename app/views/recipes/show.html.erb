@@ -10,7 +10,7 @@
           <img src="http://placehold.it/750x400" alt="" class="img-thumbnail">
           <br><br>
           <blockquote><%= @recipe.summary %></blockquote>
-          <p class="well"><%= @recipe.description %></p>
+          <div class="well"><%= simple_format @recipe.description %></div>
           <p><small>Added <%= time_ago_in_words(@recipe.created_at) %></small></p>
         </div>
       </div>
@@ -28,5 +28,6 @@
   </div>
   <div class="row">
     <%= link_to "Back to list", recipes_path, class: "btn btn-default" %>
+    <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-default" %>
   </div>
 </div>
