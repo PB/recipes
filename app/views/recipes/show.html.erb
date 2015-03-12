@@ -15,7 +15,20 @@
             <% end %>
           </div>
           <br><br>
-          <blockquote><%= @recipe.summary %></blockquote>
+          <div class="row">
+          <div class="col-sm-6 col-md-8">
+            <blockquote><%= @recipe.summary %></blockquote>
+          </div>
+          <div class="col-sm-6 col-md-4">
+            <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
+              <span class="font-20"><i class="fa fa-thumbs-up"></i> (<%= @recipe.thumbs_up_total %>)</span>
+            <% end %>
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            <%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
+              <span class="font-20"><i class="fa fa-thumbs-down"></i> (<%= @recipe.thumbs_down_total %>)</span>
+            <% end %>
+          </div>
+          </div>
           <div class="well"><%= simple_format @recipe.description %></div>
           <p><small>Added <%= time_ago_in_words(@recipe.created_at) %> ago</small></p>
         </div>

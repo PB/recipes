@@ -4,7 +4,7 @@
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
         <% if recipe.picture? %>
-          <%= image_tag(recipe.picture.medium.url, size: "240x200", class: "img-thumbnail img-responsive") %>
+          <%= image_tag(recipe.picture.medium.url, class: "img-thumbnail img-responsive") %>
         <% else %>
           <img src="http://placehold.it/240x200" alt="" class="img-thumbnail img-responsive">
         <% end %>
@@ -14,7 +14,20 @@
           <p>
             <%= link_to "View recipe", recipe, class: "btn btn-primary" %>
           </p>
-          <p><small>Added <%= time_ago_in_words(recipe.created_at) %> ago</small></p>
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <p><small>Added <%= time_ago_in_words(recipe.created_at) %> ago</small></p>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <%= link_to like_recipe_path(recipe, like: true), method: :post do %>
+                <span class="font-20"><i class="fa fa-thumbs-up"></i> (<%= recipe.thumbs_up_total %>)</span>
+              <% end %>
+              &nbsp; &nbsp; &nbsp; &nbsp;
+              <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
+                <span class="font-20"><i class="fa fa-thumbs-down"></i> (<%= recipe.thumbs_down_total %>)</span>
+              <% end %>
+            </div>
+          </div>
           <div class="media">
             <div class="media-left media-middle">
               <a href="#">
