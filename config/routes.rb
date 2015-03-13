@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'chefs/new'
+
   get 'pages/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -20,6 +22,10 @@ Rails.application.routes.draw do
       post 'like'
     end
   end
+
+  resources :chefs, except: [:new]
+  
+  get '/register' => 'chefs#new'
 
   # Example resource route with options:
   #   resources :products do
