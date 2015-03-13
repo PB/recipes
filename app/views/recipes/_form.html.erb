@@ -17,5 +17,6 @@
     <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png'  %>
     <p class="help-block">Pick some tasty picture.</p>
   </div>
-  <%= f.submit @recipe.new_record? ? 'Create recipe' : 'Edit recipe', class: "btn btn-default" %>
+  <%= link_to "Back", :back, class: "btn btn-default" %>
+  <%= f.submit @recipe.new_record? ? 'Create recipe' : 'Edit recipe', class: "btn btn-sucess" %>
 <% end %>

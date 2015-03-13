@@ -12,6 +12,6 @@
     <%= f.label :password %>
     <%= f.password_field :password, class: "form-control" %>
   </div>
-
-  <%= f.submit @chef.new_record? ? 'Register' : 'Edit profile', class: "btn btn-default" %>
+  <%= link_to "Back", :back, class: "btn btn-default" %>
+  <%= f.submit @chef.new_record? ? 'Register' : 'Edit profile', class: "btn btn-success" %>
 <% end %>
