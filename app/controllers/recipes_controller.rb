@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: [:show, :edit, :update, :like]
+  before_action :require_user, except: [:show, :index]
+  before_action :check_access_to_recipe, only: [:edit, :update]
   
   def index
     #@recipes = Recipe.all.sort_by{|likes| likes.thumbs_up_total}.reverse
@@ -6,7 +9,6 @@ class RecipesController < ApplicationController
   end
   
   def show
-    @recipe = Recipe.find(params[:id])
   end
   
   def new
@@ -15,7 +17,7 @@ class RecipesController < ApplicationController
   
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = Chef.first
+    @recipe.chef = current_user
     
     if @recipe.save
       redirect_to @recipe, notice: 'Recipe was successfully created.'
@@ -25,11 +27,9 @@ class RecipesController < ApplicationController
   end
   
   def edit
-    @recipe = Recipe.find(params[:id])
   end
   
   def update
-    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to @recipe, notice: 'Recipe was successfully updated.'
     else
@@ -38,8 +38,7 @@ class RecipesController < ApplicationController
   end
   
   def like
-    @recipe = Recipe.find(params[:id])
-    like = Like.create(like: params[:like], recipe: @recipe, chef: Chef.first)
+    like = Like.create(like: params[:like], recipe: @recipe, chef: current_user)
     if like.valid?
       redirect_to :back, notice: 'Selection was successfully created.'
     else
@@ -51,6 +50,15 @@ class RecipesController < ApplicationController
   
     def recipe_params
       params.require(:recipe).permit(:name, :summary, :description, :picture)
+    end
+    
+    def set_recipe
+      @recipe = Recipe.find(params[:id])
+    end
+    
+    def check_access_to_recipe
+      @chef = @recipe.chef
+      check_access
     end
   
 end

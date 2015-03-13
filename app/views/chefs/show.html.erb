@@ -20,6 +20,9 @@
           </div>
         </div>
       </div>
+      <% if logged_in? && current_user == @chef %>
+        <p><%= link_to "Edit profile", edit_chef_path(@chef), class: "btn btn-default" %></p>
+      <% end %>
     </div>
   </div>
   <div class="row">
@@ -75,6 +78,9 @@
       </div>  
       <% end %>
       <%= link_to "Back", :back, class: "btn btn-default" %>
+      <% if logged_in? && current_user == @chef %>
+        <%= link_to "Add new recipe", new_recipe_path, class: "btn btn-default" %>
+      <% end %>
     </div>
   </div>
 </div>

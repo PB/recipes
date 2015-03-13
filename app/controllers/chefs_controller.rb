@@ -1,4 +1,7 @@
 class ChefsController < ApplicationController
+  before_action :set_chef, only: [:edit, :update, :show]
+  before_action :check_access, only: [:edit, :update]
+  
   def index
     @chefs = Chef.paginate(page: params[:page], per_page: 9)
   end
@@ -10,27 +13,25 @@ class ChefsController < ApplicationController
   def create
     @chef = Chef.new(chef_params)
     if @chef.save
-      redirect_to recipes_path, notice: 'Your account has been successfully created.'
+      session[:chef_id] = @chef.id
+      redirect_to @chef, notice: 'Your account has been successfully created.'
     else
       render :new
     end
   end
   
   def edit
-    @chef = Chef.find(params[:id])
   end  
   
   def update
-    @chef = Chef.find(params[:id])
     if @chef.update(chef_params)
-      redirect_to recipes_path, notice: 'Your account has been successfully updated .'
+      redirect_to chef_path(@chef), notice: 'Your account has been successfully updated .'
     else
       render :edit
     end
   end
   
   def show
-    @chef = Chef.find(params[:id])
     @recipes = @chef.recipes.paginate(page: params[:page], per_page: 10)
   end
   
@@ -39,4 +40,9 @@ class ChefsController < ApplicationController
     def chef_params
       params.require(:chef).permit(:chefname, :email, :password)
     end
+    
+    def set_chef
+      @chef = Chef.find(params[:id])
+    end
+    
 end

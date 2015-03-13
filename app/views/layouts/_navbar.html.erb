@@ -22,11 +22,17 @@
         <!-- Nav Starts -->
         <div class="navbar-collapse  collapse">
           <ul class="nav navbar-nav navbar-right <%= 'scroll' if params[:controller] == 'pages' %> ">
-             <li class="active"><a href="#home">Home</a></li>
-             <li ><a href="<%= root_path %>#recipes-menu">Recipes</a></li>
-             <li ><a href="#foods">Foods</a></li>
-             <li ><a href="#partners">Partners</a></li>
-             <li ><a href="#contact">Contact</a></li>
+            <li ><a href="<%= root_path %>#home">Home</a></li>
+            <li ><a href="<%= root_path %>#recipes-menu">Recipes</a></li>
+            <li ><a href="<%= root_path %>#foods">Foods</a></li>
+            <li ><a href="<%= root_path %>#partners">Partners</a></li>
+            <li ><a href="<%= root_path %>#contact">Contact</a></li>
+            <% if logged_in? %>
+              <li><%= link_to "My profile", chef_path(current_user), class: 'log-action' %></li>
+              <li><%= link_to "Log out", logout_path, class: 'log-action' %></li>
+            <% else %>
+              <li><%= link_to "Log in", login_path, class: 'log-action' %></li>
+            <% end %>
           </ul>
         </div>
         <!-- #Nav Ends -->

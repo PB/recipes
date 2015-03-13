@@ -1,0 +1,21 @@
+<div id="home"  class="container spacer">
+  <br>
+  <div class="row">
+    <h1 class="text-center">Sing in</h1>
+    <br>
+    <div class="well col-md-8 col-md-offset-2">
+      <%= form_tag '/login' do %>
+        <div class="form-group">
+          <%= label_tag :email %>
+          <%= text_field_tag :email, nil, class: "form-control" %>
+        </div>        
+        <div class="form-group">
+          <%= label_tag :password %>
+          <%= password_field_tag :password, nil, class: "form-control" %>
+        </div> 
+        <%= link_to "Back", :back, class: "btn btn-default" %>
+        <%= submit_tag "Log in", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

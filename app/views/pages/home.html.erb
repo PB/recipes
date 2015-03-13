@@ -6,9 +6,10 @@
     <div class="caption-wrapper">
       <div class="caption-info">              
       <i class="fa fa-coffee fa-5x animated bounceInDown"></i>
-      <h1 class="animated bounceInUp">Best place for delicious pizza and coffee</h1>
+      <h1 class="animated bounceInUp">Recepis best place for pizza and coffee</h1>
       <p class="animated bounceInLeft">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-      <p><%= link_to "Sign up", register_path, class: "btn btn-default" %></p>
+      <p><%= link_to "Sign up", register_path, class: "btn btn-default" %> or
+      <%= link_to "Sign in", login_path, class: "btn btn-default" %></p>
        <a href="#recipes-menu" class="explore animated bounceInDown"><i class="fa fa-angle-down  fa-3x"></i></a>
       </div>
     </div>
@@ -42,6 +43,7 @@
       </h4>
     </div>
   </div>
+  <% if logged_in? %>
   <div class="panel panel-default">
     <div class="panel-heading" role="tab">
       <h4 class="panel-title">
@@ -49,6 +51,7 @@
       </h4>
     </div>
   </div>
+  <% end %>
   <!--
   <div class="panel panel-default">
     <div class="panel-heading" role="tab">
@@ -206,7 +209,7 @@
 <!-- works -->
 
 <div id="partners" class="container spacer ">
-	<h2 class="text-center  wowload fadeInUp">Some of our happy customers</h2>
+	<h2 class="text-center  wowload fadeInUp">Some of our chefs</h2>
   <div class="clearfix">    
     <div class="col-sm-6 col-sm-offset-3">
 
@@ -257,8 +260,8 @@
   </div>
 
 <!-- team -->
-<h3 class="text-center  wowload fadeInUp">Our Chefs</h3>
-<p class="text-center  wowload fadeInLeft">Our chefs that is making everything possible</p>
+<h3 class="text-center  wowload fadeInUp">Top Chefs</h3>
+<p class="text-center  wowload fadeInLeft">Top chefs that is making everything possible</p>
 <div class="row grid team  wowload fadeInUpBig">	
 	<div class=" col-sm-3 col-xs-6">
 	<figure class="effect-chico">
@@ -328,7 +331,7 @@
 <div id="contact" class="spacer">
 <!--Contact Starts-->
 <div class="container contactform center">
-<h2 class="text-center  wowload fadeInUp">Reservation</h2>
+<h2 class="text-center  wowload fadeInUp">Contact</h2>
   <div class="row wowload fadeInLeftBig">      
       <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
         <input type="text" placeholder="Name">

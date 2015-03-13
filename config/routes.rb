@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   resources :chefs, except: [:new]
   
   get '/register' => 'chefs#new'
+  
+  get '/login'  => 'auths#new'
+  post '/login' => 'auths#create'
+  get '/logout' => 'auths#destroy'
   # Example resource route with options:
   #   resources :products do
   #     member do
