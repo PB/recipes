@@ -38,6 +38,10 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    asset_sync (1.1.0)
+      activemodel
+      fog (>= 1.8.0)
+      unf
     autoprefixer-rails (5.1.7)
       execjs
       json
@@ -253,6 +257,9 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
     will_paginate (3.0.7)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
@@ -261,6 +268,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  asset_sync
   awesome_print
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.3)

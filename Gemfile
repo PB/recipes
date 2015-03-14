@@ -29,6 +29,8 @@ gem 'mini_magick'
 # Pagination gem
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
+# S3 assets
+gem 'asset_sync'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
