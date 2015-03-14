@@ -11,17 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313133242) do
+ActiveRecord::Schema.define(version: 20150314210054) do
 
-  create_table "chefs", force: true do |t|
-    t.string   "chefname"
-    t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "password_digest"
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "likes", force: true do |t|
+  create_table "chefs", force: :cascade do |t|
+    t.string   "chefname",        limit: 255
+    t.string   "email",           limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "password_digest", limit: 255
+  end
+
+  create_table "likes", force: :cascade do |t|
     t.boolean  "like"
     t.integer  "chef_id"
     t.integer  "recipe_id"
@@ -32,14 +38,22 @@ ActiveRecord::Schema.define(version: 20150313133242) do
   add_index "likes", ["chef_id"], name: "index_likes_on_chef_id"
   add_index "likes", ["recipe_id"], name: "index_likes_on_recipe_id"
 
-  create_table "recipes", force: true do |t|
-    t.string   "name"
+  create_table "recipe_categories", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "category_id"
+  end
+
+  add_index "recipe_categories", ["category_id"], name: "index_recipe_categories_on_category_id"
+  add_index "recipe_categories", ["recipe_id"], name: "index_recipe_categories_on_recipe_id"
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.text     "summary"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "chef_id"
-    t.string   "picture"
+    t.string   "picture",     limit: 255
   end
 
   add_index "recipes", ["chef_id"], name: "index_recipes_on_chef_id"

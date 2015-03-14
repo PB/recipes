@@ -1,6 +1,8 @@
 class Recipe < ActiveRecord::Base
   belongs_to :chef
   has_many :likes
+  has_many :recipe_categories
+  has_many :categories, through: :recipe_categories
   validates :name, :summary, :description, :chef, presence: true
   validates :name, length: {minimum: 5, maximum: 250}
   validates :summary, length: {minimum: 5, maximum: 350}
