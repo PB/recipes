@@ -69,6 +69,9 @@
     </div>
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel">
       <div class="panel-body">
+        <% if logged_in? %>
+          <div class="clearfix food-list"><div class="pull-left"><%= link_to 'Add new category', new_category_path %></div></div>
+        <% end %>
         <% @categories.each do |category| %>
           <div class="clearfix food-list"><div class="pull-left"><%= link_to category.name, category %></div></div>
         <% end %>
