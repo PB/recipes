@@ -23,7 +23,7 @@ gem 'bootstrap-sass', '~> 3.3.3'
 # Classier solution for file uploads
 gem 'carrierwave'
 # Carrierwave and AWS
-gem "fog-aws"
+gem "fog"
 # A ruby wrapper for ImageMagick or GraphicsMagick command line
 gem 'mini_magick'
 # Pagination gem
