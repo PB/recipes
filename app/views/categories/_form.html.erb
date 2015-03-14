@@ -1,0 +1,9 @@
+<%= form_for(@category) do |f| %>
+  <%= render 'shared/error', obj: @category %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <%= link_to "Back", :back, class: "btn btn-default" %>
+  <%= f.submit @category.new_record? ? 'Create category' : 'Edit recipe', class: "btn btn-sucess" %>
+<% end %>

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get '/login'  => 'auths#new'
   post '/login' => 'auths#create'
   get '/logout' => 'auths#destroy'
+  
+  resources :categories, only: [:new, :create, :show]
   # Example resource route with options:
   #   resources :products do
   #     member do

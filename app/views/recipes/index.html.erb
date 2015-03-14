@@ -12,6 +12,7 @@
         <div class="caption text-center">
           <h1><%= recipe.name %></h1>
           <p class="well"><%= recipe.summary %></p>
+          <p class="text-left"><small><%= "Category".pluralize(recipe.categories.count) %>:</small> <%= render recipe.categories %></p>
           <p>
             <%= link_to "View recipe", recipe, class: "btn btn-primary" %>
           </p>

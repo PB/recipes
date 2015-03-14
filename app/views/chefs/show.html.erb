@@ -40,6 +40,7 @@
                   <th>Image</th>
                   <th>Name</th>
                   <th>Summary</th>
+                  <th>Categories</th>
                   <th>Options</th>
                 </tr>
               </thead>
@@ -57,6 +58,7 @@
                     </td>
                     <td><%= link_to recipe.name, recipe %></td>
                     <td><%= recipe.summary %></td>
+                    <td><%= render recipe.categories %></td>
                     <td>
                       <%= link_to like_recipe_path(recipe, like: true), method: :post do %>
                         <span class="font-20"><i class="fa fa-thumbs-up"></i> (<%= recipe.thumbs_up_total %>)</span>

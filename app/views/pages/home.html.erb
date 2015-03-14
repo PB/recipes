@@ -59,24 +59,23 @@
     </div>
   </div>
   <% end %>
-  <!--
   <div class="panel panel-default">
     <div class="panel-heading" role="tab">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-         <i class="fa fa-coffee"></i> Tea & Coffee
+         <i class="fa fa-level-down"></i> Categories
         </a>
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel">
       <div class="panel-body">
-        <div class="clearfix food-list"><div class="pull-left">Tea/Coffee</div><span class="pull-right">$ 10.00</span></div>
-        <div class="clearfix food-list"><div class="pull-left">Tea/Coffee</div><span class="pull-right">$ 10.00</span></div>
-        <div class="clearfix food-list"><div class="pull-left">Tea/Coffee</div><span class="pull-right">$ 10.00</span></div>
-        <div class="clearfix food-list"><div class="pull-left">Tea/Coffee</div><span class="pull-right">$ 10.00</span></div>
+        <% @categories.each do |category| %>
+          <div class="clearfix food-list"><div class="pull-left"><%= link_to category.name, category %></div></div>
+        <% end %>
       </div>
     </div>
   </div>
+  <!--
   <div class="panel panel-default">
     <div class="panel-heading" role="tab">
       <h4 class="panel-title">
@@ -215,7 +214,7 @@
 </div>
 <!-- works -->
 
-<div id="partners" class="container spacer ">
+<div id="chefs" class="container spacer ">
 	<h2 class="text-center  wowload fadeInUp">Some of our chefs</h2>
   <div class="clearfix">    
     <div class="col-sm-6 col-sm-offset-3">

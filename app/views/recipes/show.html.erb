@@ -30,6 +30,7 @@
           </div>
           </div>
           <div class="well"><%= simple_format @recipe.description %></div>
+          <p class="text-left"><small><%= "Category".pluralize(@recipe.categories.count) %>:</small> <%= render @recipe.categories %></p>
           <p><small>Added <%= time_ago_in_words(@recipe.created_at) %> ago</small></p>
         </div>
       </div>
